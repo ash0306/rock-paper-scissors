@@ -1,0 +1,30 @@
+
+.computer{
+    text-align: center;
+    width:50%;
+    float:left;
+    /* height: 100%; */
+}
+
+.user{
+    text-align: center;
+    width: 50%;
+    float:left;
+    /* height: 100%; */
+}
+
+.user-display{
+    width: 70%;
+    float:left;
+}
+
+.user-choice{
+    width: 10%;
+    float:left;
+    display: flex;
+    flex-direction: column;
+}
+
+.result{
+    text-align: center;
+}
