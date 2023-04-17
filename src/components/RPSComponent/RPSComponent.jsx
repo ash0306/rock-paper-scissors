@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './RPSComponent.css'
+import { FaHandRock, FaHandPaper, FaHandScissors } from 'react-icons';
 
 function RPSComponent() {
     const [userChoice,setUserChoice] = useState('User\'s Choice');
@@ -7,17 +8,22 @@ function RPSComponent() {
     const [winner,setWinner] = useState('None');
     const [computerWins,setComputerWins] = useState(0);
     const [userWins,setUserWins] = useState(0);
+    const [userImage, setUserImage] = useState('user.png');
+    const [compImage, setCompImage] = useState('computer.png');
 
     const ChoiceHandler = (e) => {
         // console.log("inside function");
         if(e.target.value === 'rock'){
             setUserChoice("rock")
+            setUserImage("rock.png");
         }
         else if(e.target.value === 'paper'){
             setUserChoice("paper")
+            setUserImage("paper.png");
         }
         else if(e.target.value === 'scissors'){
             setUserChoice("scissors")
+            setUserImage("scissors.png");
         }
         ComputerChoice();
         result();
@@ -27,12 +33,15 @@ function RPSComponent() {
         const randomNumber = Math.floor(Math.random() * 3);
         if(randomNumber === 0){
             setCompChoice("rock")
+            setCompImage("rock.png");
         }
         else if(randomNumber === 1){
             setCompChoice("paper")
+            setCompImage("paper.png");
         }
         else if(randomNumber === 2){
             setCompChoice("scissors")
+            setCompImage("scissors.png");
         }
         
     }
@@ -40,31 +49,31 @@ function RPSComponent() {
     const result = () =>{
         console.log("inside result");
         if(userChoice === 'rock' && compChoice === 'paper'){
-            setWinner('Computer wins');
+            setWinner('COMPUTER WINS');
             setComputerWins(computerWins + 1);
         }
         else if(userChoice === 'paper' && compChoice ==='scissors'){
-            setWinner('Computer wins');
+            setWinner('COMPUTER WINS');
             setComputerWins(computerWins + 1);
         }
         else if(userChoice ==='scissors' && compChoice === 'rock'){
-            setWinner('Computer wins');
+            setWinner('COMPUTER WINS');
             setComputerWins(computerWins + 1);
         }
         else if(userChoice === 'rock' && compChoice === 'scissors'){
-            setWinner('User wins');
+            setWinner('USER WINS');
             setUserWins(userWins + 1);
         }
         else if(userChoice === 'paper' && compChoice === 'rock'){
-            setWinner('User wins');
+            setWinner('USER WINS');
             setUserWins(userWins + 1);
         }
         else if(userChoice ==='scissors' && compChoice === 'paper'){
-            setWinner('User wins');
+            setWinner('USER WINS');
             setUserWins(userWins + 1);
         }
         else if(userChoice === compChoice){
-            setWinner('Draw')
+            setWinner('DRAW')
         }
     }
 
@@ -73,18 +82,21 @@ function RPSComponent() {
         <div className='score'>
             <p>User wins:{userWins}</p>
             <p>Computer wins:{computerWins}</p><br/>
+            <hr/>
         </div>
         <div className='computer'>
-            <h1>Computer side</h1>
+            <h1>COMPUTER</h1>
             <p>{compChoice}</p>
+            <img src={compImage} alt='computer'/>
         </div>
 
 
 
         <div className='user'>
-            <h1>User side</h1>
+            <h1>USER</h1>
             <div className='user-display'>
                 <p>{userChoice}</p>
+                <img src={userImage} alt='user'/>
             </div>
             <div className='user-choice'>
                 <button onClick={ChoiceHandler} value={'rock'}>Rock</button>
@@ -93,7 +105,7 @@ function RPSComponent() {
             </div>
         </div>
         <div className='result'>
-            <h3>{winner}</h3>
+            <h1>{winner}</h1>
         </div>
     </React.Fragment>
   )
