@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './RPSComponent.css'
 import { FaHandRock, FaHandPaper, FaHandScissors } from 'react-icons';
 
@@ -10,6 +10,9 @@ function RPSComponent() {
     const [userWins,setUserWins] = useState(0);
     const [userImage, setUserImage] = useState('user.png');
     const [compImage, setCompImage] = useState('computer.png');
+    useEffect(()=>{
+        result();
+    },[compChoice])
 
     const ChoiceHandler = (e) => {
         // console.log("inside function");
@@ -26,7 +29,7 @@ function RPSComponent() {
             setUserImage("scissors.png");
         }
         ComputerChoice();
-        result();
+        // result();
     }
 
     const ComputerChoice = () => {
